@@ -1,0 +1,58 @@
+--- gnutls-2.6.3.orig/src/Makefile.am	2008-12-12 18:45:34.000000000 +0000
++++ gnutls-2.6.3/src/Makefile.am	2009-01-23 14:30:16.000000000 +0000
+@@ -37,35 +37,35 @@
+ gnutls_serv_SOURCES = serv.gaa serv-gaa.h serv-gaa.c list.h serv.c	\
+ 	common.h common.c select.c
+ gnutls_serv_LDADD = ../lib/libgnutls.la ../libextra/libgnutls-extra.la \
+-	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la
++	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la -lintl
+ 
+ if ENABLE_SRP
+ srptool_SOURCES = crypt.gaa crypt-gaa.h crypt-gaa.c crypt.c
+ srptool_LDADD = ../lib/libgnutls.la \
+ 	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS)				\
+-	../gl/libgnu.la ../lgl/liblgnu.la
++	../gl/libgnu.la ../lgl/liblgnu.la -lintl
+ endif
+ 
+ psktool_SOURCES = psk.gaa psk-gaa.h psk-gaa.c psk.c
+ psktool_LDADD = ../lib/libgnutls.la \
+ 	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) 				\
+-	../gl/libgnu.la ../lgl/liblgnu.la
++	../gl/libgnu.la ../lgl/liblgnu.la -lintl
+ 
+ gnutls_cli_SOURCES = cli.gaa cli-gaa.h cli-gaa.c cli.c common.h	\
+ 	common.c select.c
+ gnutls_cli_LDADD = ../lib/libgnutls.la ../libextra/libgnutls-extra.la \
+-	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la
++	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la -lintl
+ 
+ gnutls_cli_debug_SOURCES = tls_test.gaa tls_test-gaa.h tls_test-gaa.c	\
+ 	tls_test.c tests.h tests.c common.h common.c
+ gnutls_cli_debug_LDADD = ../lib/libgnutls.la			\
+ 	$(LIBGCRYPT_LIBS)	\
+-	$(LIBTASN1_LIBS) ../gl/libgnu.la
++	$(LIBTASN1_LIBS) ../gl/libgnu.la -lintl
+ 
+ certtool_SOURCES = certtool.gaa certtool-gaa.h certtool-cfg.h	\
+ 	certtool-gaa.c certtool.c prime.c certtool-cfg.c
+ certtool_LDADD = ../lib/libgnutls.la ../libextra/libgnutls-extra.la \
+-	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la @LTLIBREADLINE@
++	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la @LTLIBREADLINE@ -lintl
+ if HAVE_LIBCFG
+ certtool_LDADD += -lcfg+
+ else
+@@ -78,11 +78,11 @@
+ noinst_PROGRAMS = errcodes printlist
+ errcodes_SOURCES = errcodes.c
+ errcodes_LDADD = ../lib/libgnutls.la $(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) \
+-	../gl/libgnu.la ../lgl/liblgnu.la
++	../gl/libgnu.la ../lgl/liblgnu.la -lintl
+ 
+ printlist_SOURCES = printlist.c
+ printlist_LDADD = ../lib/libgnutls.la	\
+-	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la
++	$(LIBGCRYPT_LIBS) $(LIBTASN1_LIBS) ../gl/libgnu.la -lintl
+ 
+ 
+ psk-gaa.c: $(srcdir)/psk.gaa
